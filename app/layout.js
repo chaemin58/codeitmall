@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import styles from './layout.module.css';
 import './globals.css';
 
 export default function RootLayout({ children }) {
@@ -6,7 +7,7 @@ export default function RootLayout({ children }) {
     <html lang="ko">
       <body>
         <Header />
-        <div style={{ padding: '16px' }}>{children}</div>
+        <div className={styles.container}>{children}</div>
       </body>
     </html>
   );
