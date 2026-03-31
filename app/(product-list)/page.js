@@ -1,10 +1,13 @@
+import { get } from "@/lib/fetch";
 import ProductList from "./components/ProductList";
 
-export default function Home() {
+export default async function Home() {
+  const { results } = await get('/products');
+
   return (
     <div>
       <h1>홈페이지</h1>
-      <ProductList />
+      <ProductList products={results}/>
     </div>
   );
 }
