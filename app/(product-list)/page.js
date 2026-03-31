@@ -1,8 +1,8 @@
-import { get } from "@/lib/fetch";
+import { getProducts } from "@/lib/data";
 import ProductList from "./components/ProductList";
 
 export default async function Home() {
-  const { results } = await get('/products');
+  const { results } = await getProducts();
 
   return (
     <div>
