@@ -4,6 +4,8 @@ import logoWhite from '@/assets/logo-white.svg';
 import settingWhite from '@/assets/setting-white.svg';
 
 export default function Header(){
+  const { theme } = useTheme();
+
   return(
     <header className={styles.header}>
       <div className={styles.container}>
