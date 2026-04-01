@@ -1,6 +1,6 @@
 'use client';
 
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "@/app/contexts/ThemeContext";
 
 export default function ThemeSelect() {
   const { theme, setTheme } = useTheme();
