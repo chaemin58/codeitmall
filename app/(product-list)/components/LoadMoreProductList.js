@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductList from "./ProductList";
 
-export default function LoadMoreProductList({ initialProducts = [], initialNext = null }){
+export default function LoadMoreProductList({
+  initialProducts = [],
+  initialNext = null
+}){
   const [products, setProducts] = useState(initialProducts);
   const [next, setNext] = useState(initialNext);
 

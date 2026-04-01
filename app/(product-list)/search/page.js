@@ -12,7 +12,7 @@ export default async function Search({ searchParams }) {
   return (
     <div>
       <div>검색어: {q}</div>
-      <ProductList products={products} />
+      <LoadMoreProductList key={q || 'all'}   initialProducts={products} initialNext={next}/>
     </div>
 
   );

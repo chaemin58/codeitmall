@@ -7,7 +7,7 @@ export default async function Home() {
 
   return (
     <div>
-      <LoadMoreProductList initialProducts={products} initialNext={next}/>
+      <LoadMoreProductList key={'all'} initialProducts={products} initialNext={next}/>
     </div>
   );
 }
