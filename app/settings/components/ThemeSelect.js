@@ -2,7 +2,7 @@
 
 import { useTheme } from '../../contexts/ThemeContext';
 import styles from './ThemeSelect.module.css';
-import Dropdown from '../components/Dropdown';
+import Dropdown from '../../../components/Dropdown';
 
 export default function ThemeSelect() {
   const { theme, setTheme } = useTheme();
