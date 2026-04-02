@@ -1,44 +1,49 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import ProductList from "./ProductList";
-import { get } from "@/lib/fetch";
+import { useState } from 'react';
+import { get } from '@/lib/fetch';
+import ProductList from './ProductList';
+import Button from '@/components/Button';
+import styles from './LoadMoreProductList.module.css';
 
 export default function LoadMoreProductList({
   initialProducts = [],
-  initialNext = null
-}){
+  initialNext = null,
+}) {
   const [products, setProducts] = useState(initialProducts);
   const [next, setNext] = useState(initialNext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  //클릭하면 다음 데이터를 불러오는 함수
-  const  handleLoadMore = async() => {
-    try{
+  const handleLoadMore = async () => {
+    try {
       setLoading(true);
-      const {results: moreProducts, next: nextUrl} =  await get(next);
+      setError(null);
+
+      const { results: moreProducts, next: nextUrl } = await get(next);
       setProducts((prev) => [...prev, ...moreProducts]);
       setNext(nextUrl);
-    } catch(err){
+    } catch (err) {
+      console.error(err);
       setError(err);
-    } finally{
+    } finally {
       setLoading(false);
     }
-    
-  }
-  return(
+  };
+
+  return (
     <div>
       <ProductList products={products} />
       {next && (
-        <button 
-          style={{marginTop: '20px'}}
-          onClick ={handleLoadMore}
-          disabled={loading}>
-        상품 더 보기
-        </button>
+        <div className={styles.loadMore}>
+          <Button onClick={handleLoadMore} disabled={loading}>
+            상품 더 보기
+          </Button>
+        </div>
       )}
-      {error && <div>상품을 더 불러오는데 실패했습니다.</div>}
+      {error && (
+        <div className={styles.error}>상품을 더 불러오는데 실패했습니다.</div>
+      )}
     </div>
-  )
+  );
 }
