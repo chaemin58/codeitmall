@@ -1,9 +1,12 @@
+'use client'
+
 import Dropdown from '@/components/Dropdown';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
 import sizeReviewLabels from '@/lib/sizeReviewLabels';
 import styles from './SizeReviewForm.module.css';
 import { submitSizeReview } from '@/lib/actions';
+import { useActionState } from 'react';
 
 const defaultFormValue = {
   size: 'M',
@@ -13,8 +16,12 @@ const defaultFormValue = {
 };
 
 export default function SizeReviewForm({ product }) {
+  const [state, formAction, isPending] = useActionState(submitSizeReview, {
+    error: null,
+  });
   return (
-    <form className={styles.sizeForm} action={submitSizeReview}>
+    <form className={styles.sizeForm} action={formAction}>
+      {state.error && <div className={styles.error}>{state.error}</div>}
       <input type="hidden" name="productId" value={product.id} />
       <label className={styles.label}>
         사이즈
@@ -70,7 +77,7 @@ export default function SizeReviewForm({ product }) {
           required
         />
       </label>
-      <Button className={styles.submit}>작성하기</Button>
+      <Button className={styles.submit} disabl={isPending}>작성하기</Button>
     </form>
   );
 }2
