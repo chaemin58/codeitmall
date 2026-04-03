@@ -3,6 +3,12 @@ import SizeReviewList from './components/SizeReviewList';
 import { getProduct, getSizeReviews } from '@/lib/data';
 import styles from './page.module.css';
 import SizeReviewForm from './components/SizeReviewForm';
+import { get } from '@/lib/fetch';
+
+export async function generateStaticParams() {
+  const { results } = await get('/products?linmit=100');
+  return results.map((product)=> ({ id: product.id.toString() }));
+}
 
 export default async function Product({ params }) {
   const { id } = await params;
