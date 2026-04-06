@@ -1,5 +1,4 @@
 import styles from './page.module.css';
-import { Suspense } from "react";
 import ProductResults from "../components/ProductResults";
 
 export default async function Search({ searchParams }) {
