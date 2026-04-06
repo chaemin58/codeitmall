@@ -1,0 +1,13 @@
+import LoadMoreProductList from "./LoadMoreProductList";
+
+export default async function ProductResults({ q = '' }){
+  const { results: products, next } = await getInitialProducts(q);
+
+  return(
+    <LoadMoreProductList
+      key={'all'}
+      initialProducts={products}
+      initialNext={next}
+    />
+  )
+}

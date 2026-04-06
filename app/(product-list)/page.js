@@ -1,16 +1,16 @@
 import { getInitialProducts } from "@/lib/data";
-import LoadMoreProductList from "./components/LoadMoreProductList";
+import FeaturedBanner from "./components/FeaturedBanner";
+import { Suspense } from "react";
+import ProductListSkeleton from "./components/ProductListSkeleton";
+import ProductResults from "./components/ProductResults";
 
 export default async function Home() {
-  const { results: products, next } = await getInitialProducts();
-
   return (
     <div>
-      <LoadMoreProductList
-        key={'all'}
-        initialProducts={products}
-        initialNext={next}
-      />
+      <FeaturedBanner />
+      <Suspense fallback={<ProductListSkeleton />}>
+        <ProductResults />
+      </Suspense>
     </div>
   );
 }

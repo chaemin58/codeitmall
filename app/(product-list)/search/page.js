@@ -1,23 +1,17 @@
-import { getInitialProducts, getProduct } from "@/lib/data";
-import LoadMoreProductList from "../components/LoadMoreProductList";
 import styles from './page.module.css';
+import { Suspense } from "react";
+import ProductResults from "../components/ProductResults";
 
 export default async function Search({ searchParams }) {
 
-  const { q } = await searchParams;
-  
-  const { results: products, next} = await getInitialProducts(q);
+  const { q } = await searchParams; 
 
   return (
     <div>
       <h2 className={styles.title}>
         <span className={styles.keyword}>{q}</span> 검색 결과
       </h2>
-      <LoadMoreProductList
-        key={q || 'all'}
-        initialProducts={products}
-        initialNext={next}
-      />
+        <ProductResults q={q}/>
     </div>
   );
 }
