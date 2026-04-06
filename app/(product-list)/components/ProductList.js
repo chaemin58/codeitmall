@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styles from './ProductList.module.css';
 import StarRating from '@/components/StarRating';
 import heartIcon from '@/assets/heart.svg';
+import Image from 'next/image';
 
 export default function ProductList({ className = '', products }) {
   return (
@@ -10,7 +11,9 @@ export default function ProductList({ className = '', products }) {
         <li key={product.id}>
           <Link className={styles.product} href={`/products/${product.id}`}>
             <div className={styles.imageContainer}>
-              <img
+              <Image
+                width={500}
+                height={500}
                 src={product.imgUrl}
                 alt={product.name}
                 className={styles.image}
@@ -33,7 +36,7 @@ export default function ProductList({ className = '', products }) {
                   {product.starRatingCount.toLocaleString()}
                 </div>
                 <div className={styles.likeCount}>
-                  <img src={heartIcon.src} alt="좋아요" />
+                  <Image src={heartIcon} alt="좋아요" />
                   {product.likeCount.toLocaleString()}
                 </div>
               </div>

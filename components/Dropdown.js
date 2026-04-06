@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './Dropdown.module.css';
 import arrowIcon from '@/assets/arrow.svg';
 
@@ -31,7 +32,7 @@ export default function Dropdown({
         ))}
       </select>
       <div className={styles.arrow}>
-        <img
+        <Image
           className={styles.arrowIcon}
           src={arrowIcon.src}
           width={12}

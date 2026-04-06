@@ -5,6 +5,7 @@ import styles from './page.module.css';
 import SizeReviewForm from './components/SizeReviewForm';
 import { get } from '@/lib/fetch';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
   const { results } = await get('/products?linmit=100');
@@ -29,7 +30,7 @@ export default async function Product({ params }) {
         <span className={styles.englishName}>{product.englishName}</span>
       </h1>
       <div className={styles.content}>
-        <img
+        <Image
           width={450}
           height={500}
           src={product.imgUrl}

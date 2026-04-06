@@ -7,6 +7,7 @@ import settingWhite from '@/assets/setting-white.svg';
 import logoBlack from '@/assets/logo-black.svg'
 import settingBlack from '@/assets/setting-black.svg'
 import { useTheme } from '@/app/contexts/ThemeContext';
+import Image from 'next/image';
 
 export default function Header(){
   const { theme } = useTheme();
@@ -15,7 +16,7 @@ export default function Header(){
     <header className={styles.header}>
       <div className={styles.container}>
       <Link href="/">
-      <img
+      <Image
         src={theme === 'light' ?  logoBlack.src : logoWhite.src}
         alt='Codeitmall'
         width={155}
@@ -23,8 +24,7 @@ export default function Header(){
         />
         </Link>
       <Link href="/settings">
-      <img
-        src={settingWhite.src}
+      <Image
         src={theme === 'light' ?  settingBlack.src : settingWhite.src}
         alt='Settings'
         width={155}

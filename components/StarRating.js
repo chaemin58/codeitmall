@@ -1,6 +1,7 @@
 import starFilledIcon from '@/assets/star-filled.svg';
 import starEmptyIcon from '@/assets/star-empty.svg';
 import styles from './StarRating.module.css';
+import Image from 'next/image';
 
 const RATINGS = [1, 2, 3, 4, 5];
 
@@ -11,17 +12,17 @@ export default function StarRating({ value = 1, size = 16 }) {
     <span style={{ '--star-size': sizeVar }} className={styles.starRating}>
       {RATINGS.map((rating) =>
         value >= rating ? (
-          <img
+          <Image
             className={styles.starIcon}
             key={rating}
-            src={starFilledIcon.src}
+            src={starFilledIcon}
             alt="★"
           />
         ) : (
-          <img
+          <Image
             className={styles.starIcon}
             key={rating}
-            src={starEmptyIcon.src}
+            src={starEmptyIcon}
             alt="✩"
           />
         ),
