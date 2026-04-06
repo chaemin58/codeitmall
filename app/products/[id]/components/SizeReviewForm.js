@@ -77,7 +77,7 @@ export default function SizeReviewForm({ product }) {
           required
         />
       </label>
-      <Button className={styles.submit} disabl={isPending}>작성하기</Button>
+      <Button className={styles.submit} disabled={isPending}>작성하기</Button>
     </form>
   );
 }2

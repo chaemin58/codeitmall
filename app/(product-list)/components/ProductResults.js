@@ -1,3 +1,4 @@
+import { getInitialProducts } from "@/lib/data";
 import LoadMoreProductList from "./LoadMoreProductList";
 
 export default async function ProductResults({ q = '' }){
